@@ -14,20 +14,13 @@ public class Main {
             - количество элементов которые меньше среднего арифметического
 	    */
 
-        int[] array = createArray(10, 100);
-        for (int i : array) {
-            System.out.print(i + " ");
-        }
+        int[] array = createArray(5, 100);
+        printArray(array);
 
         int biggerAverageCount = 0;
-        double average = 0;
-        for(int j : array) {
-            average += j;
-        }
-        average = average / array.length;
-
         int evenCount = 0;
         int biggerLeftCount = 0;
+
         for (int i = 0; i < array.length; i++) {
             if (i != 0 && array[i] > array[i - 1]) {
                 biggerLeftCount++;
@@ -35,7 +28,7 @@ public class Main {
             if (array[i] % 2 == 0) {
                 evenCount++;
             }
-            if (array[i] > average) {
+            if (array[i] > findAverage(array)) {
                 biggerAverageCount++;
             }
         }
@@ -51,5 +44,19 @@ public class Main {
             array[i] = RANDOM.nextInt(bound);
         }
         return array;
+    }
+
+    private static double findAverage(int[] array) {
+        double sum = 0;
+        for(int j : array) {
+            sum += j;
+        }
+        return sum / array.length;
+    }
+
+    private static void printArray(int[] array) {
+        for (int i : array) {
+            System.out.print(i + " ");
+        }
     }
 }
