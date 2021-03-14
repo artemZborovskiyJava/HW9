@@ -20,8 +20,12 @@ public class Main {
         do {
             System.out.print("Введите имя файла в который хотите записать даную строку -> ");
             fileName = scanner.nextLine();
-        } while(fileName != null && fileName.trim().isEmpty());
+        } while(isStringEmpty(fileName));
         writeToFile(string, fileName);
+    }
+
+    private static boolean isStringEmpty(String string) {
+        return string != null && string.trim().isEmpty();
     }
 
     private static void writeToFile(String str, String fileName) {
